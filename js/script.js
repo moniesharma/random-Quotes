@@ -104,12 +104,24 @@ else {
 }
 }
 //calling the function
-myFunction = () => {
-setInterval(printQuote, 6000)
+myFunction = ()=>{
+  let timeInterval = setInterval(printQuote, 6000)
+ if(loadQuote.onClick){
+   clearTimeout(timeInterval)
+   // timeInterval = setInterval(printQuote, 2000)
+  }
+   else{
+   timeInterval = setInterval(printQuote, 6000)
 }
+}
+// reset = () =>{
+// clearInterval(myFunction)
+// myFunction = setInterval(printQuote, 2000)
+// }
+
 
 // This event listenerwill respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document
   .getElementById("loadQuote")
-  .addEventListener("click", printQuote, myFunction())
+  .addEventListener("click", printQuote, myFunction() )
