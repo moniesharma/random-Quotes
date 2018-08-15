@@ -103,25 +103,22 @@ else {
 
 }
 }
-//calling the function
-myFunction = ()=>{
-  let timeInterval = setInterval(printQuote, 6000)
- if(loadQuote.onClick){
-   clearTimeout(timeInterval)
-   // timeInterval = setInterval(printQuote, 2000)
-  }
-   else{
+// Self quote generation every 6 sec
+let timeInterval;
+
+const randomizer = () =>{
    timeInterval = setInterval(printQuote, 6000)
 }
+
+const stopRandomizer = ()=> {
+  printQuote()
+clearInterval(timeInterval)
+timeInterval = setInterval(printQuote, 6000)
 }
-// reset = () =>{
-// clearInterval(myFunction)
-// myFunction = setInterval(printQuote, 2000)
-// }
 
 
 // This event listenerwill respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document
   .getElementById("loadQuote")
-  .addEventListener("click", printQuote, myFunction() )
+  .addEventListener("click", stopRandomizer)
